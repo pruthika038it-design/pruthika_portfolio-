@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 15px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 80px 8%;
+        }
+
+        /* HOME */
+        #home {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+        }
+
+        .home-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .home-content h1 span {
+            color: #38bdf8;
+        }
+
+        .home-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .home-content p {
+            max-width: 650px;
+            margin: auto;
+            color: #dbeafe;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+
+        /* GENERAL */
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #0f172a;
+        }
+
+        .section-title span {
+            color: #2563eb;
+        }
+
+        .about-box {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        /* SKILLS */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill h3 {
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+
+        /* PROJECTS */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .project-card h3 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            margin-bottom: 8px;
+        }
+
+        /* ACHIEVEMENTS */
+        .achievement-list {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .achievement {
+            background: white;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-left: 5px solid #2563eb;
+            border-radius: 8px;
+        }
+
+        /* CERTIFICATIONS */
+        .cert-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .cert {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+
+        .cert h3 {
+            color: #2563eb;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-box p {
+            margin: 12px 0;
+        }
+
+        .contact-box a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: #0f172a;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .home-content h1 {
+                font-size: 36px;
+            }
+
+            .home-content h2 {
+                font-size: 20px;
+            }
+
+            section {
+                padding: 60px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">Portfolio</div>
+
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+        <ul id="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- HOME -->
+<section id="home">
+    <div class="home-content">
+        <h1>Hello, I'm <span>pruthika</span></h1>
+
+        <h2>B.Tech Information Technology Student</h2>
+
+        <p>
+            I am a passionate Information Technology student interested in
+            Web Development, Programming, UI/UX Design and emerging technologies.
+            I enjoy learning new technical skills and developing useful projects.
+        </p>
+
+        <a href="#about" class="btn">Explore My Portfolio</a>
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <div class="about-box">
+        <p>
+            I am a second-year B.Tech Information Technology student with a strong
+            interest in technology and software development.
+        </p>
+
+        <br>
+
+        <p>
+            My areas of interest include Web Development, Programming,
+            Database Management and UI/UX Design. I am continuously improving
+            my technical and communication skills through academic activities,
+            projects and online learning.
+        </p>
+
+        <br>
+
+        <p>
+            <strong>Education:</strong> B.Tech Information Technology – II Year
+        </p>
+
+        <p>
+            <strong>Career Objective:</strong>
+            To build a successful career in the IT industry by applying my
+            technical knowledge, creativity and problem-solving skills.
+        </p>
+    </div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <div class="skills-container">
+
+        <div class="skill">
+            <h3>C</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="skill">
+            <h3>C++</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="skill">
+            <h3>Java</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="skill">
+            <h3>Python</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="skill">
+            <h3>HTML</h3>
+            <p>Web Technology</p>
+        </div>
+
+        <div class="skill">
+            <h3>CSS</h3>
+            <p>Web Technology</p>
+        </div>
+
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <p>Web Technology</p>
+        </div>
+
+        <div class="skill">
+            <h3>MySQL</h3>
+            <p>Database</p>
+        </div>
+
+        <div class="skill">
+            <h3>Git</h3>
+            <p>Version Control</p>
+        </div>
+
+        <div class="skill">
+            <h3>GitHub</h3>
+            <p>Repository Management</p>
+        </div>
+
+        <div class="skill">
+            <h3>Communication</h3>
+            <p>Soft Skill</p>
+        </div>
+
+        <div class="skill">
+            <h3>Problem Solving</h3>
+            <p>Soft Skill</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="section-title">My <span>Projects</span></h2>
+
+    <div class="projects-container">
+
+        <div class="project-card">
+            <h3>AI-Based Smart Attendance Management System</h3>
+
+            <p>
+                <strong>Problem:</strong>
+                Manual attendance is time-consuming and can contain errors.
+            </p>
+
+            <p>
+                <strong>Technologies:</strong>
+                Python, AI, Face Recognition, Web Development
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                A smart attendance system designed to automate attendance
+                using face recognition technology.
+            </p>
+
+            <p>
+                <strong>Outcome:</strong>
+                Helps reduce manual work and maintain digital attendance records.
+            </p>
+        </div>
+
+
+        <div class="project-card">
+            <h3>Online Portfolio Website</h3>
+
+            <p>
+                <strong>Problem:</strong>
+                Students need a professional platform to showcase their
+                skills and projects.
+            </p>
+
+            <p>
+                <strong>Technologies:</strong>
+                HTML, CSS, JavaScript
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                A responsive personal portfolio website containing profile,
+                skills, projects, achievements and contact information.
+            </p>
+
+            <p>
+                <strong>Outcome:</strong>
+                Provides a professional online presence for internships
+                and placement opportunities.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+    <h2 class="section-title">My <span>Achievements</span></h2>
+
+    <div class="achievement-list">
+
+        <div class="achievement">
+            🏆 Participated in technical events and academic activities.
+        </div>
+
+        <div class="achievement">
+            💡 Completed various technical assignments and project activities.
+        </div>
+
+        <div class="achievement">
+            🎯 Participated in skill development and professional development activities.
+        </div>
+
+        <div class="achievement">
+            📚 Continuously learning new technologies and improving technical skills.
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+    <h2 class="section-title">My <span>Certifications</span></h2>
+
+    <div class="cert-container">
+
+        <div class="cert">
+            <h3>Web Development</h3>
+            <p>Platform: Online Learning Platform</p>
+            <p>Completion: 2026</p>
+        </div>
+
+        <div class="cert">
+            <h3>Programming Fundamentals</h3>
+            <p>Platform: Online Learning Platform</p>
+            <p>Completion: 2026</p>
+        </div>
+
+        <div class="cert">
+            <h3>Technical Skill Development</h3>
+            <p>Organization: Skill Development Program</p>
+            <p>Completion: 2026</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+
+    <div class="contact-box">
+
+        <p>
+            📧 <strong>Email:</strong>
+            <a href="mailto:yourmail@gmail.com">
+                yourmail@gmail.com
+            </a>
+        </p>
+
+        <p>
+            💻 <strong>GitHub:</strong>
+            <a href="https://github.com/" target="_blank">
+                GitHub Profile
+            </a>
+        </p>
+
+        <p>
+            🔗 <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/" target="_blank">
+                LinkedIn Profile
+            </a>
+        </p>
+
+        <p>
+            🎓 <strong>Department:</strong>
+            B.Tech Information Technology – II Year
+        </p>
+
+        <a href="#home" class="btn">Back to Top</a>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Your Name | Professional Portfolio</p>
+</footer>
+
+
+<script>
+
+    function toggleMenu() {
+        document.getElementById("menu").classList.toggle("active");
+    }
+
+    // Close mobile menu after clicking a navigation link
+    document.querySelectorAll("#menu a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            document.getElementById("menu").classList.remove("active");
+        });
+    });
+
+</script>
+
+</body>
+</html>
